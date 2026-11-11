@@ -109,15 +109,18 @@
   <p>
     Quando quem criou a sala sai dela, a sala inteira é apagada do Firebase na
     hora, com o nome de todo mundo que estava nela. Se quem criou a sala
-    fechar o app, ou se o celular dele desligar ou perder a conexão, o
-    Firebase apaga a sala sozinho assim que percebe que ele saiu.
+    fechar o app sem sair dela, ou se o celular dele desligar ou perder a
+    conexão, a sala fica esperando ele voltar; se ele ficar mais de meia hora
+    fora, ela é apagada quando ele abrir o app de novo. Uma sala que ninguém retomou é apagada por nós em no
+    máximo 30 dias.
   </p>
   <p style="margin-bottom:0">
     Usar "Apagar meus dados" (veja abaixo) sempre limpa tudo o que o app
     salvou no seu celular. Se houver uma sessão anônima ativa, ela é encerrada
     e o app pede ao Firebase para apagar esse identificador; sem internet, ela
-    é só encerrada neste celular. Um nome que ainda estiver em uma sala aberta
-    some junto com a sala.
+    é só encerrada neste celular. Com internet, isso também apaga a sala que
+    você criou e tira o seu nome da sala de outra pessoa; um nome que ainda
+    ficar em uma sala aberta some junto com a sala.
   </p>
 </div>
 
@@ -144,6 +147,15 @@
   desligadas, nada mais é enviado.
 </p>
 
+<h2>Relatórios de falha</h2>
+<p>
+  Quando o app fecha sozinho ou uma tela dá erro, um relatório técnico é
+  enviado ao Firebase Crashlytics (Google) para que a gente consiga corrigir
+  o problema: modelo do aparelho, versão do Android, versão do app e o erro
+  que aconteceu. O relatório não leva o seu nome, o código da sala nem nada
+  do que foi digitado nos jogos, e não depende da opção Estatísticas de uso.
+</p>
+
 <h2>Avaliação das cartas</h2>
 <p>
   No fim de uma partida, o grupo pode, se quiser, marcar cartas do jogo como
@@ -161,24 +173,39 @@
     pode desligar em Ajustes a qualquer momento.</li>
   <li>Avaliação das cartas: interesse legítimo em melhorar os baralhos, sem
     dados que identifiquem você.</li>
+  <li>Relatórios de falha: interesse legítimo em corrigir erros do app, sem
+    dados que identifiquem você.</li>
 </ul>
 
 <h2>Quem recebe os dados e onde ficam</h2>
 <p>
   O GameNight não mostra anúncios e não vende nem compartilha seus dados. O
   único serviço de terceiro que o app usa é o Google Firebase (Google LLC),
-  que hospeda as salas, as estatísticas de uso e as avaliações de cartas em
+  que hospeda as salas, as estatísticas de uso, os relatórios de falha e as avaliações de cartas em
   nosso nome. Os servidores do Google podem ficar fora do Brasil, inclusive
   nos Estados Unidos; o Google trata esses dados sob os seus termos de
   proteção de dados
-  (<a href="https://firebase.google.com/terms/data-processing-terms">firebase.google.com/terms/data-processing-terms</a>).
+  (<a href="https://firebase.google.com/terms/data-processing-terms">firebase.google.com/terms/data-processing-terms</a>)
+  e explica o que faz com eles em
+  <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.
+</p>
+
+<h2>Segurança</h2>
+<p>
+  Os dados viajam criptografados entre o celular e o Firebase, e as regras do
+  banco de dados só deixam entrar numa sala quem tem o código dela. Se
+  acontecer um incidente de segurança que possa trazer risco ou dano a quem
+  joga, avisamos a ANPD e as pessoas afetadas, como a LGPD exige.
 </p>
 
 <h2>Por quanto tempo</h2>
 <ul>
-  <li>Salas: até quem criou a sala sair ou se desconectar.</li>
+  <li>Salas: até quem criou a sala sair dela; se ele fechou o app sem sair,
+    até ele abrir o app de novo depois de meia hora; e uma sala abandonada, no máximo
+    30 dias. "Apagar meus dados" também apaga a sala que você criou.</li>
   <li>Estatísticas de uso: 2 meses; depois disso o Google apaga os
     detalhes e sobram só totais que não ligam nada a nenhum celular.</li>
+  <li>Relatórios de falha: 90 dias; depois o Google os apaga.</li>
   <li>Avaliação das cartas: enquanto servirem para revisar os baralhos; elas
     não identificam ninguém.</li>
   <li>Identificador anônimo: fica no Firebase até você usar "Apagar meus
@@ -201,8 +228,9 @@
 <h2>Crianças</h2>
 <p>
   O GameNight é feito para grupos de adolescentes e adultos e não é
-  direcionado a crianças. O app não pede idade nem coleta dados que
-  identifiquem quem joga.
+  direcionado a crianças. O app não pede idade e não coleta nome
+  completo, e-mail, telefone nem localização exata: só o apelido que você digita e
+  o identificador anônimo descritos acima.
 </p>
 
 <h2>Como apagar tudo</h2>

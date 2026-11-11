@@ -111,16 +111,20 @@
   <p>
     When the person who created the room leaves it, the whole room is deleted
     from Firebase at once, with the names of everyone who was in it. If that
-    person closes the app, or their phone switches off or loses its
-    connection, Firebase deletes the room by itself as soon as it notices
-    they are gone.
+    person closes the app without leaving the room, or their phone switches
+    off or loses its connection, the room waits for them to come back; if they
+    stay away more than half an hour, it is deleted when they open the app
+    again. A room nobody came back to is
+    deleted by us within 30 days at most.
   </p>
   <p style="margin-bottom:0">
     Using "Apagar meus dados" (Delete my data, see below) always clears
     everything the app saved on your phone. If an anonymous session is
     active, it is ended and the app asks Firebase to delete that identifier;
-    without a connection, it is only ended on this phone. A name still in an
-    open room is deleted when that room closes.
+    without a connection, it is only ended on this phone. With a connection,
+    it also deletes the room you created and takes your name out of someone
+    else's room; a name still left in an open room is deleted when that room
+    closes.
   </p>
 </div>
 
@@ -148,6 +152,15 @@
   (Settings → Privacy → Usage statistics); once off, nothing more is sent.
 </p>
 
+<h2>Crash reports</h2>
+<p>
+  When the app closes by itself or a screen fails, a technical report is sent
+  to Firebase Crashlytics (Google) so we can fix the problem: the device
+  model, the Android version, the app version and the error that happened.
+  The report carries no name, no room code and nothing typed in the games,
+  and it does not depend on the Usage statistics switch.
+</p>
+
 <h2>Card ratings</h2>
 <p>
   At the end of a game the group can choose to mark cards as "Boa" (good) or
@@ -166,23 +179,42 @@
     that you can switch off in Ajustes (Settings) at any time.</li>
   <li>Card ratings: our legitimate interest in improving the decks, with no
     data that identifies you.</li>
+  <li>Crash reports: our legitimate interest in fixing the app's errors, with
+    no data that identifies you.</li>
 </ul>
 
 <h2>Who receives the data and where it is kept</h2>
 <p>
   GameNight shows no ads and does not sell or share your data. The only
   third-party service the app uses is Google Firebase (Google LLC), which
-  hosts the rooms, the usage statistics and the card ratings on our behalf.
+  hosts the rooms, the usage statistics, the crash reports and the card
+  ratings on our behalf.
   Google's servers may be outside Brazil, including in the United States;
   Google handles this data under its data protection terms
-  (<a href="https://firebase.google.com/terms/data-processing-terms">firebase.google.com/terms/data-processing-terms</a>).
+  (<a href="https://firebase.google.com/terms/data-processing-terms">firebase.google.com/terms/data-processing-terms</a>)
+  and explains what it does with it at
+  <a href="https://firebase.google.com/support/privacy">firebase.google.com/support/privacy</a>.
+</p>
+
+<h2>Security</h2>
+<p>
+  Data travels encrypted between the phone and Firebase, and the database
+  rules only let someone into a room if they have its code. If a security
+  incident could put players at risk or cause them harm, we tell Brazil's
+  data protection authority (ANPD) and the people affected, as the LGPD
+  requires.
 </p>
 
 <h2>How long it is kept</h2>
 <ul>
-  <li>Rooms: until the person who created the room leaves or disconnects.</li>
+  <li>Rooms: until the person who created the room leaves it; if they closed
+    the app without leaving, until they open the app again after half an
+    hour; and an
+    abandoned room, 30 days at most. "Apagar meus dados" (Delete my data) also
+    deletes the room you created.</li>
   <li>Usage statistics: 2 months; after that Google deletes the details and
     only totals remain, which link nothing to any phone.</li>
+  <li>Crash reports: 90 days; then Google deletes them.</li>
   <li>Card ratings: while they are useful for reviewing the decks; they
     identify nobody.</li>
   <li>Anonymous identifier: kept in Firebase until you use "Apagar meus
@@ -208,8 +240,9 @@
 <h2>Children</h2>
 <p>
   GameNight is made for groups of teenagers and adults and is not aimed at
-  children. The app does not ask for anyone's age or collect data that
-  identifies who plays.
+  children. The app does not ask for anyone's age and does
+  not collect full names, email addresses, phone numbers or precise location: only
+  the nickname you type and the anonymous identifier described above.
 </p>
 
 <h2>How to delete everything</h2>
